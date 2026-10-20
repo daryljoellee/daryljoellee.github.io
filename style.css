@@ -1,0 +1,214 @@
+:root {
+  --bg: #fbfaf7;
+  --surface: #ffffff;
+  --fg: #232323;
+  --muted: #6b6a66;
+  --faint: #94938e;
+  --accent: #3a5a7a;
+  --accent-soft: #6d8bab;
+  --border: #e8e5de;
+  --maxw: 700px;
+  --serif: "Newsreader", Georgia, "Times New Roman", serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14151a;
+    --surface: #1b1d23;
+    --fg: #e9e8e4;
+    --muted: #a6a49d;
+    --faint: #77756e;
+    --accent: #9db9d8;
+    --accent-soft: #7f9cbd;
+    --border: #2a2d35;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--fg);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  padding: 3.5rem 0 1.6rem;
+}
+
+.site-header h1 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(2.1rem, 6vw, 2.9rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+
+.tagline {
+  margin: 0.7rem 0 0.1rem;
+  font-size: 1.06rem;
+  color: var(--fg);
+}
+
+.fields {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+nav {
+  margin-top: 1.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.4rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--border);
+}
+
+nav a {
+  position: relative;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  padding-bottom: 2px;
+  transition: color 0.18s ease;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 100%;
+  height: 1.5px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.22s ease;
+}
+
+nav a:hover { color: var(--accent); }
+nav a:hover::after { transform: scaleX(1); }
+
+.intro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.portrait {
+  flex-shrink: 0;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--border);
+}
+
+/* ---------- Sections ---------- */
+main { padding: 1.4rem 0 2.5rem; }
+
+section { margin-bottom: 2.4rem; }
+
+h2 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.45rem;
+  letter-spacing: -0.01em;
+  margin: 0 0 1rem;
+  color: var(--fg);
+}
+
+h3 {
+  font-family: var(--sans);
+  font-size: 0.74rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  color: var(--faint);
+  margin: 1.5rem 0 0.7rem;
+}
+
+section p { margin: 0 0 0.9rem; color: var(--fg); }
+
+a { color: var(--accent); text-decoration-color: var(--accent-soft); text-underline-offset: 2px; }
+a:hover { color: var(--accent-soft); }
+
+/* ---------- Papers ---------- */
+ul.papers { list-style: none; padding: 0; margin: 0; }
+
+ul.papers li {
+  padding: 0.9rem 0 0.9rem 1.1rem;
+  border-left: 2px solid var(--border);
+  margin-bottom: 0.5rem;
+  transition: border-color 0.2s ease;
+}
+ul.papers li:hover { border-left-color: var(--accent-soft); }
+
+ul.papers .title {
+  display: block;
+  font-family: var(--serif);
+  font-size: 1.12rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.005em;
+}
+
+ul.papers .authors {
+  display: block;
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-top: 0.15rem;
+}
+
+ul.papers .note {
+  display: block;
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-top: 0.2rem;
+}
+
+ul.papers .note em, ul.papers .authors em { font-style: italic; }
+
+/* ---------- Plain lists ---------- */
+ul.plain { list-style: none; padding: 0; margin: 0; }
+ul.plain li {
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--fg);
+}
+ul.plain li:last-child { border-bottom: none; }
+
+/* ---------- Footer ---------- */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 1.6rem 1.5rem 2.5rem;
+  color: var(--faint);
+  font-size: 0.82rem;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  body { font-size: 16px; }
+  .site-header { padding-top: 2.5rem; }
+  .intro { flex-direction: column-reverse; align-items: flex-start; gap: 1.1rem; }
+  .portrait { width: 112px; height: 112px; }
+}
